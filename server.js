@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const axios = require("axios");
 const port = 3000;
-const netlifyURL = "https://marvelous-raindrop-d766d4.netlify.app";
+const netlifyURL = "splendid-gelato-a5acea.netlify.app";
 app.use(
   cors({
     origin: netlifyURL,
@@ -35,4 +35,5 @@ app.get("/weather", async (req, res) => {
 });
 
 // get API key, add api key thing to axios
+
 
