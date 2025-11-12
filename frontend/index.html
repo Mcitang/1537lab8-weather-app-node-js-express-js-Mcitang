@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>WEATHER APP</h1>
+    <p>Input city name here:</p>
+    <input type="text" id="cityInput" />
+    <button id="submitBtn">Submit</button>
+
+    <div id="weatherDiv"></div>
+
+    <!-- City input is from the input field ID, .value not sure -->
+    <script>
+      const cityInput = document.getElementById("cityInput");
+      const submitBtn = document.getElementById("submitBtn");
+      submitBtn.addEventListener("click", async () => {
+        const cityName = cityInput.value;
+        const weatherDiv = document.getElementById("weatherDiv");
+        const response = await fetch(
+          `http://localhost:3000/weather?cityName=${cityName}`
+        );
+        const data = await response.json();
+        weatherDiv.innerHTML = `
+            <p>Temperature: ${data.temperature} degrees Celsius.</p>
+            <p>Description: ${data.description}.</p>
+            <img src="https://openweathermap.org/img/wn/${data.icon}.png" alt="Weather Icon" />
+        `;
+      });
+    </script>
+  </body>
+</html>
